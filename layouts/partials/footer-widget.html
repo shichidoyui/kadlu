@@ -1,0 +1,32 @@
+{{ if eq .Type "post" }}
+<!-- フッターウィジェット postの場合、アドセンスの関連コンテンツとhugoの関連記事を表示する -->
+<aside class="column is-12 container kadlu-bgcolor1">
+    {{ if and .Site.Params.adsensePublisher .Site.Params.adsenseSlotRelation }}
+    <h4 class="kadlu-title1">関連記事</h4>
+    <div class="block kadlu-widget">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed"
+            data-ad-client="{{ .Site.Params.adsensePublisher }}"
+            data-ad-slot="{{ .Site.Params.adsenseSlotRelation }}"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    {{ else }}
+    {{ partial "adsense.html" . }}
+    {{ end }}
+    {{ $related := .Site.RegularPages.Related . | first 8 }}
+    {{ with $related }}
+    <div class="block kadlu-widget">
+        <h4 class="kadlu-title1">関連記事</h4>
+        <div class="columns is-multiline">
+            {{ range . }}
+            <div class="column is-3">
+                {{ .Render "summary" }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+</aside>
+{{ end }}

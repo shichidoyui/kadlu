@@ -1,0 +1,25 @@
+{{ define "main" }}
+{{ if eq .Title "Tags"}}
+{{ if lt 0 (len .Site.Taxonomies.tags) }}
+<h1 class="kadlu-title1">タグ一覧</h1>
+<nav class="block">
+    <ul class="tags">
+        {{ range .Site.Taxonomies.tags.ByCount }}
+        <li class="tag"><a href="/tags/{{ .Name | urlize }}"><span>{{ .Name | title }}</span></a></li>
+        {{ end }}
+    </ul>
+</nav>
+{{ end }}
+{{ else if eq .Title "Categories"}}
+{{ if lt 0 (len .Site.Taxonomies.categories) }}
+<h1 class="kadlu-title1">カテゴリ一覧</h1>
+
+<ul class="menu-list">
+    {{ range .Site.Taxonomies.categories.ByCount }}
+    <li><a href="/categories/{{ .Name | urlize }}">{{ .Name }}<span>({{ .Count }})</span></a>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}
+{{ end }}
+{{ end }}

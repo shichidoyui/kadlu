@@ -1,0 +1,27 @@
+<!doctype html>
+<html  lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="utf-8" />
+    <!-- タイトル表示 ページの場合は「markdownのページタイトル」それ以外は「config」  -->
+    <title>{{- block "title" . -}} {{ if eq .Kind "page" }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }} {{- end -}}</title>
+    <!-- Shared Head -->
+    {{ partial "head.html" . }}
+</head>
+<body id="top" class="is-fullwidth kadlu-bgcolor2">
+    {{ partial "header.html" . }}
+    <main class="section container">
+        <div class="columns is-multiline">
+            {{ partial "header-widget.html" . }}
+            <div class="column is-8 kadlu-bgcolor1">
+                {{ block "main" . }}{{ end }}
+            </div>
+            <aside class="column is-4 kadlu-bgcolor1">
+                {{ partial "sidebar.html" . }}
+            </aside>
+            {{ partial "footer-widget.html" . }}
+        </div>
+    </main>
+    {{ partial "footer.html" . }}
+</body>
+
+</html>

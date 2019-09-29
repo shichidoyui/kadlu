@@ -1,0 +1,24 @@
+<div class="columns is-vcentered is-mobile  {{if .Get `right`}}kadlu-row-reverse{{ end }}">
+    <figure class="column is-2-mobile is-1-desktop">
+        <img src="
+        {{ if .Get `src` }}
+        {{ .Get `src` }}
+        {{ else }}
+          {{ if .Site.Params.profileImg }}
+            {{ .Site.Params.profileImg }}
+          {{ end }}
+        {{ end }}
+        " width="75" height="75"></img>
+    </figure>
+    <div class="column is-10-mobile is-11-desktop {{if .Get `right`}}has-text-right{{ end }}">
+        <div class="{{if .Get `right`}}kadlu-balloon-right{{ else }}kadlu-balloon-left{{ end }}">
+            <p>
+                {{ if .Get "value" }}
+                {{ .Get "value" | htmlUnescape}}
+                {{ else }}
+                {{ .Get 0 | htmlUnescape}}
+                {{ end }}
+            </p>
+        </div>
+    </div>
+</div>

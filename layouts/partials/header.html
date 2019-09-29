@@ -1,0 +1,78 @@
+<header>
+    <section class="hero is-large kadlu-has-background kadlu-bgcolor1">
+        {{ if .Site.Params.mainImage }}
+        <img class="kadlu-hero-background" src="{{.Site.BaseURL }}{{ .Site.Params.mainImage }}"
+            alt="TOP image"></img>
+        {{ end }}
+        <div class="hero-head">
+            {{ if .Site.Menus.main }}
+            <nav class="navbar is-fixed-top">
+                <div class="navbar-end">
+                    <a class="navbar-burger is-flex" aria-label="menu" role="button" onclick="openFunction()">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+            </nav>
+            {{ end }}
+        </div>
+        <!-- メニュー用モーダル -->
+        {{$nowURL := urls.Parse .Permalink }}
+        <nav id="modal" class="modal">
+            <div class="modal-background" onclick="closeFunction();" role="button"></div>
+            <div class="modal-card">
+                <div class="modal-card-head">
+                    <p class="modal-card-title">メニュー</p>
+                    <button onclick="closeFunction();" class="delete"
+                        aria-label="close"></button>
+                </div>
+                <div class="modal-card-body">
+                    <!-- Content ... -->
+                    <ul>
+                        {{ range .Site.Menus.main.ByWeight }}
+                        {{ if .HasChildren }}
+                        <li class="navbar-start">
+                            <span>{{ .Name }}</span>
+                            <ul>
+                                {{ range .Children }}
+                                <li>
+                                    <a class="navbar-item has-text-grey" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                                </li>
+                                {{ end }}
+                            </ul>
+                        </li>
+                        {{ else }}
+                        <li>
+                            <a class="navbar-item has-text-grey" href="{{ .URL | relLangURL  }}">{{ .Name }}</a>
+                        </li>
+                        {{ end }}
+                        {{ end }}
+                    </ul>
+                </div>
+                <div class="modal-card-foot">
+                </div>
+            </div>
+        </nav>
+        <!-- サイトのタイトル・ディスクリプションを表示 -->
+        <div class="hero-body">
+            <div class="container">
+                <!-- h1は貴重なのでホームのみ使用します -->
+                <a href="{{ .Site.BaseURL }}">
+                    {{ if .IsHome}}
+                    <h1 class="title kadlu-color4">
+                        {{ .Site.Title }}
+                    </h1>
+                    {{ else }}
+                    <h4 class="title kadlu-color4">
+                        {{ .Site.Title }}
+                    </h4>
+                    {{ end }}
+                    <p class="subtitle kadlu-color1">
+                        {{ .Site.Params.Description }}
+                    </p>
+                </a>
+            </div>
+        </div>
+    </section>
+</header>

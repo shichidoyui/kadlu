@@ -1,0 +1,67 @@
+{{ define "main" }}
+<nav aria-label="Breadcrumb" role="navigation"  class="breadcrumb">
+    <ul>
+        <li><a href="{{ .Site.BaseURL }}">TOP</a></li>
+        {{ with .Params.categories }}
+        {{ range . }}
+        <li><a href="/categories/{{ lower . }}/">{{.}}</a></li>
+        {{ end }}
+        {{ end }}
+    </ul>
+</nav>
+<header>
+    <h1 class="title kadlu-entry-title">{{ .Title }}</h1>
+    <!-- ソーシャルボタン -->
+    {{ partial "social.html" . }}
+    <!-- 日付 更新日があれば表示する -->
+    {{ if .Params.DispDate }}
+    <p class="has-text-right kadlu-bgcolor3">
+        {{ if .Params.updateDate }}
+        <span><i class="far fa-clock"></i>{{ dateFormat "2006年 1月 2日" .Params.updateDate }}</span>&nbsp;
+        {{ end }}
+        <span><i class="fas fa-pencil-alt"></i>{{ .Date.Format "2006年 1月 2日" }}</span><br>
+    </p>
+    {{ end }}
+    <!-- markdownのcoverが指定されている場合アイキャッチイメージを表示する -->
+    {{ if isset .Params "cover" }}
+    <img alt="{{ .Title }}"  class="entry-cover"
+        src="{{ .Params.cover |  absURL }}" data-amp-auto-lightbox-disable>
+    </img>
+    {{ end }}
+    <!-- ○○分で読めます部分 -->
+    {{ if .Params.ReadingTime }}
+    <p class="block has-text-centered kadlu-title3"><span>{{ .ReadingTime }} 分で読めます</span></p>
+    {{ end }}
+    {{ if .Params.toc }}
+    <div class="block menu-list kadlu-border-bottom">
+        <p class="kadlu-title1">目次</p>
+        {{.TableOfContents }}
+    </div>
+    {{ end }}
+    <!-- 広告表示位置 -->
+    {{ partial "adsense.html" . }}
+</header>
+<article class="kadlu-article">
+    {{ .Content }}
+</article>
+{{ if isset .Params "tags" }}
+<nav class="block">
+    <ul class="tags">
+        {{ range $tag := .Params.tags }}
+        <li class="tag"><a href="/tags/{{ $tag | urlize }}"><span>{{ $tag | title }}</span></a></li>
+        {{ end }}
+    </ul>
+</nav>
+{{ end }}
+<!-- 前の記事 次の記事 -->
+{{ if eq .Type "post" }}
+<nav role="navigation"  aria-label="pagination" class="block pagination is-centered">
+    {{ with .PrevInSection }}
+    <a class="pagination-previous" href="{{ .Permalink }}">←前の記事</a>
+    {{ end }}
+    {{ with .NextInSection }}
+    <a class="pagination-next" href="{{ .Permalink }}">次の記事→</a>
+    {{ end }}
+</nav>
+{{ end }}
+{{ end }}

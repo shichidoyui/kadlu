@@ -1,0 +1,33 @@
+<div class="card is-block">
+  {{ if isset .Params "cover" }}
+  <a href="{{ .Permalink }}">
+    <figure class="card-image" title="{{ .Title }}">
+      <img alt="{{ .Title }}"  class="entry-cover" src="{{.Site.BaseURL }}{{ .Params.cover }}">
+      </img>
+    </figure>
+  </a>
+  {{ end }}
+  <header class="card-content">
+    <a href="{{ .Permalink }}">
+      <h5 class="kadlu-title2">{{ .Title }}</h5>
+    </a>
+  </header>
+  <article class="is-hidden-mobile card-content ">
+    <p>{{ .Summary | plainify | htmlUnescape }}</p>
+    {{ if isset .Params "categories" }}
+    <ul class="tags">
+      {{ range $categories := .Params.categories }}
+      <li class="tag"><a href="/categories/{{ $categories | urlize }}"><span>{{ $categories | title }}</span></a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </article>
+  <footer class="entry-footer card-content columns is-mobile">
+    {{ if .Params.DispDate }}
+    <p class="column"><i class="fad fa-pencil"></i><span>{{ .Date.Format "2006年 1月 2日" }}</span></p>
+    {{ end }}
+    {{ if .Params.ReadingTime }}
+    <p class="column has-text-right"> {{ .ReadingTime }} 分読了</p>
+    {{ end }}
+  </footer>
+</div>

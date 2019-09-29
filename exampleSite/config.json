@@ -1,0 +1,107 @@
+{
+  "baseURL": "https://example.com/",
+  "languageCode": "ja",
+  "title": "kadlu",
+  "theme": "kadlu",
+  "hasCJKLanguage": true,
+  "taxonomies": {
+    "tag": "tags",
+    "category": "categories"
+  },
+  "permalinks": {
+    "post": "/:section/:filename/"
+  },
+  "googleAnalytics": "UA-xxxxxxxx-xx",
+  "params": {
+    "author": "岸波白野",
+    "logo": "/img/logo.jpg",
+    "favicon": "/img/common/favicon.ico",
+    "description": "kadluテストページ",
+    "paginate": 10,
+    "mainImage": "/img/common/main-img.jpg",
+    "adsensePublisher": "ca-pub-xxxxxxxxxxxxxxxx",
+    "adsenseSlot": "xxxxxxxxxx",
+    "adsenseSlotRelation": "xxxxxxxxxx",
+    "adsenseAutoAds": true,
+    "googleSiteVerification": "google_site_verification_code",
+    "msValidate": "bing_site_verification_code",
+    "email": "name@email.com",
+    "github": "github",
+    "twitter": "twitter",
+    "instagram": "instagram",
+    "profileImg": "/img/common/faceicon.png",
+    "profileDescription": "<p>雷の女神をイメージした「HUGO用」テンプレートです。</p>"
+  },
+  "menu": {
+    "main": [
+      {
+        "name": "検索",
+        "weight": 1,
+        "url": "/search/"
+      },
+      {
+        "name": "ホーム",
+        "weight": 2,
+        "url": "/"
+      },
+      {
+        "name": "カテゴリ",
+        "weight": 3,
+        "url": "/categories/"
+      },
+      {
+        "name": "タグ",
+        "weight": 4,
+        "url": "/tags/"
+      },
+      {
+        "name": "お問い合わせ",
+        "weight": 5,
+        "url": "/pages/contact/"
+      }
+    ],
+    "footer": [
+      {
+        "name": "免責事項",
+        "weight": 1,
+        "url": "/pages/disclaimer/"
+      },
+      {
+        "name": "お問い合わせ",
+        "weight": 2,
+        "url": "/pages/contact/"
+      }
+    ],
+    "sub": [
+      {
+        "identifier": "sub1",
+        "name": "Hugo用テーマkadluについて",
+        "weight": 1
+      },
+      {
+        "parent": "sub1",
+        "name": "コンフィグパラメータ",
+        "url": "/post/kadlu-config-param/",
+        "weight": 1
+      },
+      {
+        "parent": "sub1",
+        "name": "ページパラメータ",
+        "url": "/post/kadlu-page-param/",
+        "weight": 2
+      },
+      {
+        "parent": "sub1",
+        "name": "資源一覧",
+        "url": "/post/kadlu-resource-list/",
+        "weight": 3
+      },
+      {
+        "parent": "sub1",
+        "name": "装飾タグ一覧",
+        "url": "/post/kadlu-decoration-tag/",
+        "weight": 4
+      }
+    ]
+  }
+}

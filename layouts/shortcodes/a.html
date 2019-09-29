@@ -1,0 +1,26 @@
+{{ $href := .Get "href"}}
+{{ $target := .Get "target"  | default "_self" }}
+<div class="box">
+    <div class="media">
+        {{ with .Site.GetPage $href }}
+        {{ if .Params.cover }}
+        <figure class="media-left">
+            <img class="image is-128x128 " src="{{ .Params.cover }}" >
+            </img>
+        </figure>
+        {{ end }}
+        <div class="media-content">
+            <a class="content kadlu-color4" href="{{ $href }}" target="{{ $target }}">
+                <p>
+                    <span class="bold">{{ .Title }}</span>
+                </p>
+                <p>
+                    {{ if .Params.Description }}
+                    {{ .Params.Description }}
+                    {{ end }}
+                </p>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</div>

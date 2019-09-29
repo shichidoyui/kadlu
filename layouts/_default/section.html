@@ -1,0 +1,27 @@
+{{ define "main" }}
+<!-- セクション一覧 postフォルダの中身のみリスト表示する-->
+<h1 class="block kadlu-title1">{{ .Title }}</h1>
+<div class="columns is-variable is-multiline">
+  {{ $paginator := .Paginate (where .Data.Pages "Type" "post") (index .Site.Params "paginate" | default 10) }}
+  {{ if ne $paginator.TotalPages 0 }}
+  {{ range $paginator.Pages }}
+  <div class="column is-12-tablet is-12-mobile is-6-desktop">
+    {{ .Render "summary" }}
+  </div>
+  {{ end }}
+  {{ else }}
+  <p class="column">ごめんなさい。非表示記事です。</p>
+  {{ end }}
+</div>
+<!-- ページネーション 合計ページ数が1以上の場合表示する -->
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="pagination is-right" role="navigation" aria-label="pagination">
+  {{ if $paginator.HasPrev }}
+  <a class="pagination-previous" href="{{ $paginator.Prev.URL }}">← 前へ</a>
+  {{ end }}
+  {{ if $paginator.HasNext }}
+  <a class="pagination-next" href="{{ $paginator.Next.URL }}">次へ →</a>
+  {{ end }}
+</nav>
+{{ end }}
+{{ end }}
