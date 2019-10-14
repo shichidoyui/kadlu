@@ -5,7 +5,7 @@
         {{ with .Site.GetPage $href }}
         {{ if .Params.cover }}
         <figure class="media-left">
-            <img class="image is-128x128 " src="{{ .Params.cover }}" >
+            <img class="image is-128x128 " src="{{ .Params.cover }}">
             </img>
         </figure>
         {{ end }}
@@ -14,13 +14,19 @@
                 <p>
                     <span class="bold">{{ .Title }}</span>
                 </p>
-                <p>
-                    {{ if .Params.Description }}
-                    {{ .Params.Description }}
-                    {{ end }}
-                </p>
             </a>
         </div>
-        {{ end }}
+        <button class="sub-window-open-link kadlu-modal-button">
+            <i class="far fa-window-restore"></i>
+        </button>
+
     </div>
+    <p>
+        {{ if .Params.Description }}
+        {{ .Params.Description }}
+        {{else}}
+        {{ .Summary }}
+        {{ end }}
+    </p>
+    {{ end }}
 </div>

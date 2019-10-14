@@ -1,7 +1,7 @@
 <!-- フッターエリア -->
-<footer class="footer kadlu-bgcolor3">
+<footer class="footer kadlu-bgcolor3 barba-container">
     <!-- 最上部へ戻るボタン -->
-    <p class="kadlu-page-top-button"><a class="button is-pulled-right" href="#top">page top</a></p>
+    <p class="kadlu-page-top-button"><a id="page-top-button" class="button is-pulled-right" href="#" role="button">page top</a></p>
     <!-- フッターメニューがあれば表示 コピーライトの表示-->
     <div class="content has-text-centered">
         {{ if .Site.Menus.footer }}
@@ -10,9 +10,4 @@
         <p>© {{ if eq now.Year 2018 }}2018{{ else }}2018-{{ now.Year }}{{ end }} {{ .Site.Title }}<br>proudly powered by
             kadlu</p>
     </div>
-    <!-- lightbox -->
-    <script src="/js/lightbox.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-    <script src="/js/kadlu-common.js"></script>
-    
 </footer>

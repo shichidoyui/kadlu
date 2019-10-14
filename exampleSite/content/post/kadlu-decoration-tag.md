@@ -17,11 +17,9 @@ draft: false
 
 Hugoテーマkadluの装飾用クラスを紹介します。
 
-kadluはカノニカルAMPサイトですので、タグ内にstyleを追加することはできません。
-
 <!-- more -->
 
-クラス指定でなんとかしてください。
+クラス指定でなんとかなる部分が多いのではないかと…
 
 ## kadluの独自スタイル
 
@@ -214,6 +212,24 @@ kadluはカノニカルAMPサイトですので、タグ内にstyleを追加す�
 </div>
 
 画像が未指定の場合は、プロフィールのアイコンから持ってきます。
+
+### サブウィンドウシステム(pochette)
+
+ショードコードで囲んだコンテンツをメモとして、サブウィンドウに渡すことができます。
+
+{{<pochette title="本日の動画">}}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CGyEd0aKWZE?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{</pochette>}}
+
+<div class="sourceview">
+<pre class="prettyprint linenums">
+{{&lt;pochette title=&quot;本日の動画&quot;&gt;}}
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/CGyEd0aKWZE?controls=0&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
+{{&lt;/pochette&gt;}}
+</pre>
+</div>
+
+動画などは非同期通信のため、再生しながら画面遷移することが可能です。
 
 ## Bulma引き継ぎ装飾
 

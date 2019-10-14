@@ -15,31 +15,26 @@
 {{$nowURL := urls.Parse .Permalink }}
 <div class="block kadlu-widget">
     <h4 class="kadlu-title1">サイトメニュー</h4>
-    <nav class="menu-list">
+    <nav id="sub-nav" class="menu-list">
         <ul>
             {{ range .Site.Menus.sub.ByWeight }}
-            {{ $linkURL := urls.Parse .URL }}
             {{ if .HasChildren }}
             <li>
                 {{ if .URL }}
-                <a class="{{ if eq $nowURL.Path $linkURL.Path }}is-active{{ end }}"
-                    href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
                 {{ else }}
                 <span>{{ .Name }}</span>
                 {{ end }}
                 <ul>
                     {{ range .Children }}
-                    {{ $linkURL := urls.Parse .URL }}
-                    <li><a class="{{ if eq $nowURL.Path $linkURL.Path }}is-active{{ end }}"
-                            href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+                    <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
                     {{ end }}
                 </ul>
             </li>
             {{ else }}
             <li>
                 {{ if .URL }}
-                <a class="{{ if eq $nowURL.Path $linkURL.Path }}is-active{{ end }}"
-                    href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
                 {{ else }}
                 <span>{{ .Name }}</span>
                 {{ end }}
@@ -57,7 +52,7 @@
         {{ if .Site.Params.profileImg }}
         <img class="is-pulled-left" src="{{ .Site.Params.profileImg | absURL }}" width="100" height="100"></img>
         {{ end }}
-        <div class="is-clearfix	">
+        <div class="is-clearfix">
             {{.Site.Params.profileDescription | safeHTML}}
         </div>
     </div>
@@ -88,19 +83,26 @@
     <div>
         <ul class="menu-list">
             {{ range .Site.Taxonomies.categories.ByCount }}
-            <li><a href="/categories/{{ .Name | urlize }}">{{ .Name }}<span>({{ .Count }})</span></a>
+            <li><a class="pjax" href="/categories/{{ .Name | urlize }}">{{ .Name }}<span>({{ .Count }})</span></a>
             </li>
             {{ end }}
         </ul>
     </div>
 </div>
 <div class="kadlu-sticky">
-    {{ if .Params.toc }}
     <div class="block menu-list is-hidden-mobile kadlu-border-bottom kadlu-widget">
-        <p class="kadlu-title1">目次</p>
-        {{.TableOfContents }}
+        <div class="message-header kadlu-title1">
+            <p>目次</p>
+            <button class="sub-window-open kadlu-modal-button" aria-label="delete">
+                <i class="far fa-window-restore"></i>sub
+            </button>
+        </div>
+        <div>
+            <div class="menu-list toc copy">
+                {{.TableOfContents }}
+            </div>
+        </div>
     </div>
-    {{ end }}
     <!-- ソーシャルボタン -->
     <div class="block">
         {{ partial "social.html" . }}

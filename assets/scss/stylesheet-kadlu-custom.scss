@@ -29,7 +29,6 @@ body {
   color: $color4;
 }
 
-
 .kadlu-article h2,
 .kadlu-title1 {
   background-color: $color1;
@@ -38,6 +37,7 @@ body {
   position: relative;
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
+  font-weight: normal;
 }
 
 .kadlu-article h2:after,
@@ -175,7 +175,7 @@ body {
 }
 
 .message.is-kadlu {
-    background-color: $color1;
+  background-color: $color1;
 }
 
 .message.is-kadlu .message-body {

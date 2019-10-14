@@ -46,6 +46,29 @@ toml・yamlへはツールなどで移行していただければ…
     "post": "/:section/:filename/"
   },
   "googleAnalytics": "'UA-xxxxxxxx-x",
+  "outputs": {
+    "home": [
+      "HTML",
+      "JSON",
+      "RSS"
+    ],
+    "page": [
+      "HTML",
+      "JSON"
+    ],
+    "section": [
+      "HTML",
+      "JSON"
+    ],
+    "taxonomyTerm": [
+      "HTML",
+      "JSON"
+    ],
+    "taxonomy": [
+      "HTML",
+      "JSON"
+    ]
+  },
   "params": {
     "author": "岸波白野",
     "logo": "/img/logo.jpg",
@@ -164,6 +187,10 @@ toml・yamlへはツールなどで移行していただければ…
   <tr>
     <td>googleAnalytics</td>
     <td>Googleアナリティクス設定<br>トラッキングコードを入れておくと、サイト解析ができます。実はHugoのデフォルト機能</td>
+  </tr>
+  <tr>
+    <td>outputs</td>
+    <td>出力形式設定<br>システム的にはpageのJSONのみ仕様しています。ほかは好み。</td>
   </tr>
   <tr>
     <td>author</td>

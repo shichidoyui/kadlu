@@ -1,5 +1,5 @@
 {{ define "main" }}
-<nav aria-label="Breadcrumb" role="navigation"  class="breadcrumb">
+<nav aria-label="Breadcrumb" role="navigation" class="breadcrumb">
     <ul>
         <li><a href="{{ .Site.BaseURL }}">TOP</a></li>
         {{ with .Params.categories }}
@@ -24,8 +24,7 @@
     {{ end }}
     <!-- markdownのcoverが指定されている場合アイキャッチイメージを表示する -->
     {{ if isset .Params "cover" }}
-    <img alt="{{ .Title }}"  class="entry-cover"
-        src="{{ .Params.cover |  absURL }}" data-amp-auto-lightbox-disable>
+    <img alt="{{ .Title }}" class="entry-cover" src="{{ .Params.cover |  absURL }}" data-amp-auto-lightbox-disable>
     </img>
     {{ end }}
     <!-- ○○分で読めます部分 -->
@@ -33,9 +32,18 @@
     <p class="block has-text-centered kadlu-title3"><span>{{ .ReadingTime }} 分で読めます</span></p>
     {{ end }}
     {{ if .Params.toc }}
-    <div class="block menu-list kadlu-border-bottom">
-        <p class="kadlu-title1">目次</p>
-        {{.TableOfContents }}
+    <div class="block kadlu-border-bottom">
+        <div class="message-header kadlu-title1">
+            <p>目次</p>
+            <button class="sub-window-open kadlu-modal-button" aria-label="delete">
+                <i class="far fa-window-restore"></i>sub
+            </button>
+        </div>
+        <div id="toc-orign">
+            <div class="menu-list toc">
+                {{.TableOfContents }}
+            </div>
+        </div>
     </div>
     {{ end }}
     <!-- 広告表示位置 -->
@@ -55,7 +63,7 @@
 {{ end }}
 <!-- 前の記事 次の記事 -->
 {{ if eq .Type "post" }}
-<nav role="navigation"  aria-label="pagination" class="block pagination is-centered">
+<nav role="navigation" aria-label="pagination" class="block pagination is-centered">
     {{ with .PrevInSection }}
     <a class="pagination-previous" href="{{ .Permalink }}">←前の記事</a>
     {{ end }}

@@ -1,0 +1,82 @@
+{
+"title": {{ .Title | jsonify }},
+"url": {{ .Permalink | jsonify }},
+"content": {{ .Content | jsonify }},
+"date": {{ .Date | jsonify }},
+"updateDate": {{ .Params.updateDate | jsonify }},
+"categories": [
+  {{ with .Params.categories }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+],
+"tags": [ 
+  {{ with .Params.tags }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+ ],
+"description":{{ .Params.description | jsonify }},
+"cover": {{ .Params.cover | jsonify }},
+"hashtags": [
+  {{ with .Params.hashtags }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+],
+"author":{{ .Params.author | jsonify }},
+"toc": {{ .Params.toc | jsonify }},
+"dispDate": {{ .Params.dispDate | jsonify }},
+"noIndex": {{ .Params.noIndex | jsonify }},
+"dispReadingTime":{{ .Params.readingTime | jsonify }},
+"readingTime":{{ .ReadingTime | jsonify }},
+"tableOfContents":{{ .TableOfContents | jsonify }},
+"prevInSection":[{
+  {{ with .PrevInSection }}
+  "title":{{ .Title | jsonify }},
+  "url":{{ .Permalink | jsonify}},
+  "summary":{{ .Summary | jsonify}},
+  "date": {{ .Date | jsonify }},
+  "updateDate": {{ .Params.updateDate | jsonify }},
+  "categories": [
+     {{ with .Params.categories }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+   ],
+  "tags": [ 
+     {{ with .Params.tags }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+   ],
+  "description":{{ .Params.description | jsonify }},
+  "cover": {{ .Params.cover | jsonify }}
+  {{ end }}
+}],
+"nextInSection":[{
+  {{ with .NextInSection }}
+  "title":{{ .Title | jsonify }},
+  "url":{{ .Permalink | jsonify}},
+  "summary":{{ .Summary | jsonify}},
+  "date": {{ .Date | jsonify }},
+  "updateDate": {{ .Params.updateDate | jsonify }},
+  "categories": [
+    {{ with .Params.categories }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+  ],
+  "tags": [ 
+    {{ with .Params.tags }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+   ],
+  "description":{{ .Params.description | jsonify }},
+  "cover": {{ .Params.cover | jsonify }}
+  {{ end }}
+}],
+{{ $related := .Site.RegularPages.Related . | first 10 }}
+{{ with $related }}
+"related":[
+  {{ range $i, $e := $related }}
+  {{ if ne $i 0 }},{{ end }}
+  {
+    "title":{{ .Title | jsonify }},
+    "url":{{ .Permalink | jsonify}},
+    "summary":{{ .Summary | jsonify}},
+    "date": {{ .Date | jsonify }},
+    "updateDate": {{ .Params.updateDate | jsonify }},
+    "categories": [
+      {{ with .Params.categories }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+    ],
+    "tags": [ 
+      {{ with .Params.tags }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+    ],
+    "description":{{ .Params.description | jsonify }},
+    "cover": {{ .Params.cover | jsonify }}
+    }
+  {{ end }}
+{{ end }}
+]
+}

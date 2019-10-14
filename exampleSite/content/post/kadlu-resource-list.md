@@ -80,7 +80,7 @@ draft: false
     </td>
   </tr>
   <tr>
-    <td>single.html</td>
+    <td>single.html(json)</td>
     <td>
       <span class="bold">概要</span><br>
       シングルページのテンプレート<br>
@@ -95,6 +95,7 @@ draft: false
       ・記事の表示<br>
       ・タグの表示<br>
       ・post記事の場合「前の記事」「次の記事」を表示<br>
+      ・(JSON)サブウィンドウへ記事を表示するために使用
     </td>
   </tr>
 

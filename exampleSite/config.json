@@ -12,6 +12,25 @@
     "post": "/:section/:filename/"
   },
   "googleAnalytics": "UA-xxxxxxxx-xx",
+  "outputs": {
+    "home": [
+      "HTML",
+      "RSS"
+    ],
+    "page": [
+      "HTML",
+      "JSON"
+    ],
+    "section": [
+      "HTML"
+    ],
+    "taxonomyTerm": [
+      "HTML"
+    ],
+    "taxonomy": [
+      "HTML"
+    ]
+  },
   "params": {
     "author": "岸波白野",
     "logo": "/img/logo.jpg",
