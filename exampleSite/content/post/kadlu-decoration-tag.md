@@ -3,7 +3,8 @@ title: "装飾ダグ一覧"
 date: 2019-08-15T22:27:44+09:00
 updateDate: 2019-08-15T22:27:44+09:00
 categories: ["静的ジェネレーター","kadlu"]
-tags: [ "kadlu" ,"bluma"]
+tags: [ "kadlu" ,"bulma"]
+hashtags: ["kadlu" ,"bulma"]
 url: "/post/kadlu-decoration-tag"
 description:
 cover: "/img/eyecatch/eyecatch001.jpg"

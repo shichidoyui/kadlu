@@ -12,7 +12,9 @@
 <header>
     <h1 class="title kadlu-entry-title">{{ .Title }}</h1>
     <!-- ソーシャルボタン -->
-    {{ partial "social.html" . }}
+    <div id="sns-orign">
+        {{ partial "social.html" . }}
+    </div>
     <!-- 日付 更新日があれば表示する -->
     {{ if .Params.DispDate }}
     <p class="has-text-right kadlu-bgcolor3">

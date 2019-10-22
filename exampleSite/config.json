@@ -15,7 +15,8 @@
   "outputs": {
     "home": [
       "HTML",
-      "RSS"
+      "RSS",
+      "JSON"
     ],
     "page": [
       "HTML",

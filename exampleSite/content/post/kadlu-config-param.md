@@ -4,6 +4,7 @@ date: 2019-08-15T22:27:44+09:00
 updateDate: 2019-08-27T22:27:44+09:00
 categories: ["kadlu基本設計","kadlu"]
 tags: [ "kadlu","Hugo" ]
+hashtags: ["kadlu" ,"Hugo"]
 url: "/post/kadlu-config-param"
 description: 
 cover: "/img/eyecatch/eyecatch001.jpg"
@@ -154,7 +155,6 @@ toml・yamlへはツールなどで移行していただければ…
 }
 </pre>
 
-
 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
   <tr>
     <th>パラメータ</th>
@@ -273,4 +273,3 @@ toml・yamlへはツールなどで移行していただければ…
     <td>サブメニュー<br>登録しておくと、サイドバーのサブメニューが出ます</td>
   </tr>
 </table>
-

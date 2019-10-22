@@ -1,0 +1,60 @@
+
+{{ define "escape" }}
+{{ trim (replace . "\n" " ") " " | replaceRE " +" " " | jsonify }}
+{{ end }}
+
+{
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "post" ) (index .Site.Params "paginate" | default 10) }}
+    {{ with $paginator }}
+   "data":[
+     {{ range $i, $e := $paginator.Pages }}
+     {{ if ne $i 0 }},{{ end }}
+     {
+       "title":{{ .Title | jsonify }},
+       "url":{{ .Permalink | jsonify}},
+       "summary":{{ .Summary | jsonify}},
+       "date": {{ .Date | jsonify }},
+       "updateDate": {{ .Params.updateDate | jsonify }},
+       "categories": [
+         {{ with .Params.categories }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+       ],
+       "tags": [ 
+         {{ with .Params.tags }}{{ range $i, $e := . }}{{ if ne $i 0 }},{{ end }}{{. | jsonify}}{{ end }}{{ end }}
+       ],
+       "description":{{ .Params.description | jsonify }},
+       "cover": {{ .Params.cover | jsonify }},
+       "body": {{ template "escape" (printf "%s %s" .Title .Plain) | plainify }}
+       }
+     {{ end }}
+   ],
+   "first":[
+       {
+       "url":{{ if $paginator.First }}{{ $paginator.First.URL | jsonify }}{{else}}""{{end}}
+       }
+   ],
+   "hasPrev":[
+       {
+       "url":{{ if $paginator.HasPrev }}{{ $paginator.Prev.URL | jsonify }}{{else}}""{{end}}
+       }
+   ],
+   "pagers":[
+     {{ range $i, $e := $paginator.Pagers }}
+     {{ if ne $i 0 }},{{ end }}
+     {
+     "pageNumber":{{ .PageNumber | jsonify }},
+     "url":{{ .URL | jsonify }}
+     }
+     {{ end }}
+    ],
+   "hasNext":[
+       {
+       "url":{{ if $paginator.HasNext  }}{{ $paginator.Next.URL | jsonify }}{{else}}""{{end}}
+       }
+   ],
+   "last":[
+       {
+       "url":{{ if $paginator.Last }}{{ $paginator.Last.URL | jsonify }}{{else}}""{{end}}
+       }
+   ]
+   {{ end }}
+   }

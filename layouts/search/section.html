@@ -1,0 +1,18 @@
+{{ define "main" }}
+<!-- 検索JS読み込み -->
+<script defer  src="/js/kadlu-search.js"></script>
+
+<h1 class="kadlu-title1">ブログ検索</h1>
+<p>キーワードにメタ文字を含む場合、エスケープが必要です。</p>
+
+<div>
+    <input id="searchBox" class="input" size="15" autocomplete="off" autofocus
+        placeholder="検索ワードを入力" />
+    <span id="inputWord"></span> <span id="resultCount"></span>
+    <div id="result" class="kadlu-article"></div>
+</div>
+
+<noscript>
+    <p class="notice">注意: この検索機能は JavaScript を使用しています。</p>
+</noscript>
+{{ end }}

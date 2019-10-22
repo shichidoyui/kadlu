@@ -4,6 +4,7 @@ date: 2019-08-15T22:27:44+09:00
 updateDate: 2019-08-27T22:27:44+09:00
 categories: ["kadlu基本設計","kadlu"]
 tags: [ "kadlu","Hugo" ]
+hashtags: ["kadlu" ,"Hugo"]
 url: "/post/kadlu-page-param"
 description: 
 cover: "/img/eyecatch/eyecatch001.jpg"
@@ -38,6 +39,7 @@ date: 2019-08-15T22:27:44+09:00
 updateDate: 2019-08-27T22:27:44+09:00
 categories: ["kadlu基本設計","kadlu"]
 tags: [ "kadlu" ]
+hashtags: ["kadlu" ,"Hugo"]
 url: "/post/kadlu-page-param"
 description: 
 cover: "/img/common/eyecatch001.jpg"
@@ -79,6 +81,11 @@ draft: false
   <tr>
     <td><span class="bold blue">tags</span></td>
     <td>⑨タグ。<br>Javascriptの配列のように書いて複数指定できる。<br>これだけでタグページが自動作成される。<br>厳密には違うが<span class="bold blue">Hugo用意しているパラメータ</span>(オプションパラメータという)</td>
+  </tr>
+   <tr>
+    <td><span class="bold blue">hashtags</span></td>
+    <td>ハッシュタグ。<br>ユーザーにツートされるとき、登録されているハッシュタグを埋め込む
+    </td>
   </tr>
   <tr>
     <td><span class="bold blue">url</span></td>

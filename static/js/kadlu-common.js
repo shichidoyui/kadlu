@@ -11,10 +11,10 @@ $(function () {
     barba.init({
         transitions: [{
             afterEnter() {
-                // サブウィンドウシステム・シンタックスハイライトをリロード
+                // サブウィンドウシステム・シンタックスハイライト・遅延ドードをリロード
                 subWindowInit();
                 PR.prettyPrint();
-
+                $('img.lazy').lazyload();
             },
             after() {
                 // サイドバーのメニューを一度クリアし、本体の目次をコピー
@@ -40,6 +40,11 @@ $(function () {
  * モーダル制御のメソッド (一度のみ)
  */
 function subWindowCommand() {
+
+    /** モーダルのリサイズを可能にする */
+    $('#sub-window').resizable({
+        handles: 'nw, n, ne, w, e, sw, s, se'
+    });
 
     /** モーダルのドラッグを可能にする */
     $('#sub-window').draggable({
@@ -70,7 +75,6 @@ function subWindowCommand() {
         if (modalLebel === 1) {
             // モーダルレベルが1のとき
             // 画面へ真ん中へ位置調整
-            $('#sub-window').css('max-height', 'calc(100vh - 60vh)');
             $('#sub-window').height($(window).height() / 10 * 4);
             const top = subWindowY + $(window).scrollTop();
             $('#sub-window').offset({ top: top, left: subWindowX });
@@ -88,7 +92,7 @@ function subWindowCommand() {
         if (modalLebel === 1) {
             // モーダルレベルが1のとき
             // 画面へ真ん中へ位置調整
-            $('#sub-window').css('max-height', 'calc(100vh - 60vh)').height($(window).height() / 10 * 4);
+            $('#sub-window').height($(window).height() / 10 * 4);
             const top = subWindowY + $(window).scrollTop();
             $('#sub-window').offset({ top: top, left: subWindowX });
             // 拡大ボタンを表示にする
@@ -161,10 +165,10 @@ function subWindowInit() {
             e.preventDefault();
             var data;
             $.ajax({
-                url: targetHref + "/index.json",
+                url: targetHref + '/index.json',
                 type: 'GET',
                 contentType: 'application/json', // リクエストの Content-Type
-                dataType: "json",           // レスポンスをJSONとしてパースする
+                dataType: 'json',           // レスポンスをJSONとしてパースする
             }).then(
                 function (json) { // jsonの読み込みに成功した時
                     // コンテンツ入れ替え、識別クラス追加、モーダルボタンを非表示
@@ -191,9 +195,10 @@ function initToc() {
         $(window).scrollTop($('main').offset().top);
     }
 
-    //目次の変更 クリアして変更した画面の物をコピー
+    //サイドバー目次・SNSの変更 クリアして変更した画面の物をコピー
     setTimeout(() => {
-        $('.copy.toc').html('').html($('#toc-orign').children().html()).removeClass('is-hidden');
+        $('.copy.toc').html('').html($('#toc-orign').children().html());
+        $('.copy.sns').html('').html($('#sns-orign').children().html());
     });
 }
 
@@ -219,7 +224,11 @@ function initButton() {
  */
 function initDesign() {
     $('#sub-nav a').removeClass('is-active');
-    $('#sub-nav a[href^="' + location.pathname + '"]').addClass('is-active');
+    const path = location.pathname
+    if (path.includes('/', 1)) {
+        // トップ以外でパスを含んでいたらハイライト
+        $('#sub-nav a[href^="' + path + '"]').addClass('is-active');
+    }
 }
 
 
