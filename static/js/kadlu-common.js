@@ -6,15 +6,23 @@ var modalLebel = Number(1);
 var subWindowX = Number(0);
 var subWindowY = Number(0);
 
+/** スタイル変更のブレークポイント */
+var breakPoint = Number(1023);
+
+/** Safari対応 youtubeにインライン再生のパラメータ付与*/
+var req_params = 'playsinline=1';
+
 $(function () {
     // barba.init();
     barba.init({
         transitions: [{
             afterEnter() {
                 // サブウィンドウシステム・シンタックスハイライト・遅延ドードをリロード
-                subWindowInit();
+                initSubWindow();
                 PR.prettyPrint();
                 $('img.lazy').lazyload();
+                // Youtubeにインライン再生URLを付与
+                initYoutube();
             },
             after() {
                 // サイドバーのメニューを一度クリアし、本体の目次をコピー
@@ -24,9 +32,11 @@ $(function () {
         }]
     });
     // サブウィンドウシステムのコマンド読み込み
-    subWindowCommand();
+    initSubWindowCommand() ;
     // 各ボタンにサブウィンドウ用のボタンを登録
-    subWindowInit();
+    initSubWindow();
+    // Youtubeにインライン再生URLを付与
+    initYoutube();
     // 共通部分のボタンを登録
     initButton();
     // デザイン周り
@@ -39,7 +49,7 @@ $(function () {
 /**
  * モーダル制御のメソッド (一度のみ)
  */
-function subWindowCommand() {
+function initSubWindowCommand()  {
 
     /** モーダルのリサイズを可能にする */
     $('#sub-window').resizable({
@@ -66,18 +76,17 @@ function subWindowCommand() {
             // 拡大ボタンを非表示にする
             $('#sub-window-up').addClass('is-hidden');
             // 全画面へのサイズ調整
-            $('#sub-window').css('max-height', '100vh').height($(window).height());
-            // 全画面への位置調整
-            const top = $(window).scrollTop();
-            $('#sub-window').offset({ top: top });
+            $('#sub-window').css('height', '100vh').css('top', '0');
         }
 
         if (modalLebel === 1) {
             // モーダルレベルが1のとき
             // 画面へ真ん中へ位置調整
-            $('#sub-window').height($(window).height() / 10 * 4);
             const top = subWindowY + $(window).scrollTop();
-            $('#sub-window').offset({ top: top, left: subWindowX });
+            $('#sub-window').offset({ top: top, left: subWindowX }).css('height', '40vh');
+            if ($(window).width() <= breakPoint) {
+                $('#sub-window').offset({ top: top, left: subWindowX }).css('bottom', '0').css('top', 'unset');
+            }
             // 縮小ボタンを表示にする
             $('#sub-window-down').removeClass('is-hidden');
             // ドラッグ可能にする
@@ -92,9 +101,12 @@ function subWindowCommand() {
         if (modalLebel === 1) {
             // モーダルレベルが1のとき
             // 画面へ真ん中へ位置調整
-            $('#sub-window').height($(window).height() / 10 * 4);
+            // $('#sub-window').height($(window).height() / 10 * 4);
             const top = subWindowY + $(window).scrollTop();
-            $('#sub-window').offset({ top: top, left: subWindowX });
+            $('#sub-window').offset({ top: top, left: subWindowX }).css('height', '40vh')
+            if ($(window).width() <= breakPoint) {
+                $('#sub-window').css('bottom', '0').css('top', 'unset');
+            }
             // 拡大ボタンを表示にする
             $('#sub-window-up').removeClass('is-hidden');
         }
@@ -109,9 +121,8 @@ function subWindowCommand() {
             subWindowY = $('#sub-window').offset().top - $(window).scrollTop();
             // 最小化の位置へ移動する
             const top = $(window).height() - 48 + $(window).scrollTop();
-            $('#sub-window').offset({ top: top, left: 0 });
+            $('#sub-window').offset({ top: top, left: 0 }).css('bottom', -$('#sub-window').height() + 48).css('top', 'unset');
             // ドラッグ不可
-            $('#sub-window').removeClass('kadlu-click-invalid');
             $('#sub-window').draggable('disable');
         }
     });
@@ -131,9 +142,12 @@ function subWindowOpen() {
 
     if ($('#sub-window').hasClass('is-hidden')) {
         // 非表示状態の場合、位置をリセットして表示する
-        $('#sub-window').removeClass('is-hidden').height($(window).height() / 10 * 4);
+        $('#sub-window').removeClass('is-hidden').css('height', '40vh');
         const top = $(window).height() - $('#sub-window').height() + $(window).scrollTop();
         $('#sub-window').offset({ top: top, left: 0 });
+        if ($(window).width() <= breakPoint) {
+            $('#sub-window').css('bottom', '0').css('top', 'unset');
+        }
         // 拡大・縮小ボタンを表示にする
         $('#sub-window-up,#sub-window-down').removeClass('is-hidden');
         // モーダルレベルをリセット
@@ -144,7 +158,7 @@ function subWindowOpen() {
 /** 
  * モーダルを開くボタンを設定する(リロードごと)
  */
-function subWindowInit() {
+function initSubWindow() {
 
     /** サブウィンドウ開くボタン */
     $('.sub-window-open').on('click', function () {
@@ -180,6 +194,21 @@ function subWindowInit() {
                 function () { //jsonの読み込みに失敗した時
                     console.log('失敗');
                 });
+        }
+    });
+}
+
+/** Safari対応 youtubeにインライン再生のパラメータ付与*/
+function initYoutube() {
+    $('iframe').each(function () {
+        var url = $(this).attr('src');
+        if (typeof url !== 'undefined') {
+            if (url.indexOf('youtube') !== -1 && url.indexOf('playsinline=1') === -1) {
+                // youtubeのiframe時の処理
+                var new_path = url + `${(url.indexOf('?') === -1) ? '?' : '&'}` + req_params;
+                $(this).attr('src', '');
+                $(this).attr('src', new_path);
+            }
         }
     });
 }
