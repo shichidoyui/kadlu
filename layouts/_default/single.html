@@ -35,7 +35,7 @@
     {{ end }}
     {{ if .Params.toc }}
     <div class="block kadlu-border-bottom">
-        <div class="message-header kadlu-title1">
+        <div class="message-header kadlu-title1" role="directory">
             <p>目次</p>
             <button class="sub-window-open kadlu-modal-button" aria-label="delete">
                 <i class="far fa-window-restore"></i>sub
@@ -51,11 +51,11 @@
     <!-- 広告表示位置 -->
     {{ partial "adsense.html" . }}
 </header>
-<article class="kadlu-article">
+<article class="kadlu-article" role="article">
     {{ .Content }}
 </article>
 {{ if isset .Params "tags" }}
-<nav class="block">
+<nav class="block" role="directory">
     <ul class="tags">
         {{ range $tag := .Params.tags }}
         <li class="tag"><a href="/tags/{{ $tag | urlize }}"><span>{{ $tag | title }}</span></a></li>

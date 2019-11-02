@@ -316,7 +316,7 @@ draft: false
       <span class="bold">概要</span><br>
       画像表示用のショートコード<br>
       <span class="bold">主な機能</span><br>
-      ・amp-imgを表示する<br>
+      ・imgを表示する<br>
       ・lightboxを装備<br>
     </td>
   </tr>
@@ -339,6 +339,26 @@ draft: false
       <span class="bold">主な機能</span><br>
       ・サブウィンドウ起動用のボタンを表示する<br>
       ・ショートコードで挟むことにより様々なコンテンツをサブウィンドウ化できる
+    </td>
+  </tr>
+  <tr>
+    <td>carousel-container.html</td>
+    <td>
+      <span class="bold">概要</span><br>
+      カルーセルのエリア確保用ショートコード<br>
+      <span class="bold">主な機能</span><br>
+      ・カルーセルの表示エリアを表示する<br>
+      ・内部に後述のcarousel-slideショートコードを使いコンテンツを用意する
+    </td>
+  </tr>
+  <tr>
+    <td>carousel-slide.html</td>
+    <td>
+      <span class="bold">概要</span><br>
+      カルーセルのスライド作成用ショートコード<br>
+      <span class="bold">主な機能</span><br>
+      ・挟んだコンテンツをスライド表示する<br>
+      ・親としてcarousel-containerショートコードが必要
     </td>
   </tr>
 </table>
@@ -458,7 +478,7 @@ draft: false
     <td>jQuery.lazyload.js</td>
     <td>
       <span class="bold">概要</span><br>
-      画像の遅延ドードJS<br>
+      画像の遅延ロードJS<br>
       <span class="bold">主な機能</span><br>
       ・ショートコード(画像・内部リンク)を遅延ロード<br>
       ・一覧ページでの画像を遅延ロード<br>
@@ -499,6 +519,16 @@ draft: false
       コードのシンタックスハイライト用JS<br>
       <span class="bold">主な機能</span><br>
       ・コードが有る画面に雑に色付できる
+    </td>
+  </tr>
+  <tr>
+    <td>swiper.js(css)</td>
+    <td>
+      <span class="bold">概要</span><br>
+      カルーセル用JS<br>
+      <span class="bold">主な機能</span><br>
+      ・カルーセル機能を追加
+      ・slickはサブウィンドウシステムと相性が悪いのでこちらを採用
     </td>
   </tr>
 </table>

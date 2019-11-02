@@ -162,7 +162,9 @@ Hugoテーマkadluの装飾用クラスを紹介します。
 
 ショートコードで対応できます。
 
-デフォルトで遅延ロードをかけています
+デフォルトで遅延ロードをかけています。遅延ロードを掛けたくない場合は「lazy="false"」属性を指定してください。
+
+SEO的に画像検索に出したい図や、下記カルーセル用の画像を用意したいときに使用してください。
 
 クリック後はライトボックスで表示されます。
 
@@ -174,6 +176,8 @@ Hugoテーマkadluの装飾用クラスを紹介します。
 <div class="sourceview">
 <pre class="prettyprint linenums">
 {{&lt;img src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
+{{&lt;img lazy=&quot;false&quot; src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
+
 </pre>
 </div>
 </div>
@@ -231,6 +235,52 @@ Hugoテーマkadluの装飾用クラスを紹介します。
 </div>
 
 動画などは非同期通信のため、再生しながら画面遷移することが可能です。
+
+### カルーセル
+
+Swiperをインポートしているので、カルーセルもできます。
+
+ショートコードを使って起動できます。
+
+もちろん、サブウィンドウシステムにも対応していますので、記事内の解説スライドを別ウィンドウで起動することもできますよ！
+
+設定値は私好みですので、jsをいじっていただけば自動スライドなんかもできます。
+
+{{<pochette title="カルーセルもサブウィンドウで">}}
+  {{<carousel-container>}}
+    {{<carousel-slide>}}
+    test1
+    {{<img lazy="false" src="/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg" alt="画像挿入について">}}
+    {{</carousel-slide>}}
+    {{<carousel-slide>}}
+    test2
+    {{<img lazy="false" src="/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg" alt="画像挿入について">}}
+    {{</carousel-slide>}}
+    {{<carousel-slide>}}
+    test3
+    {{<img lazy="false" src="/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg" alt="画像挿入について">}}
+    {{</carousel-slide>}}
+  {{</carousel-container>}}
+{{</pochette>}}
+
+<div class="sourceview">
+<pre class="prettyprint linenums">
+{{&lt;carousel-container&gt;}}
+    {{&lt;carousel-slide&gt;}}
+    test1
+    {{&lt;img lazy=&quot;false&quot; src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
+    {{&lt;/carousel-slide&gt;}}
+    {{&lt;carousel-slide&gt;}}
+    test2
+    {{&lt;img lazy=&quot;false&quot; src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
+    {{&lt;/carousel-slide&gt;}}
+    {{&lt;carousel-slide&gt;}}
+    test3
+    {{&lt;img lazy=&quot;false&quot; src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
+    {{&lt;/carousel-slide&gt;}}
+  {{&lt;/carousel-container&gt;}}
+</pre>
+</div>
 
 ## Bulma引き継ぎ装飾
 

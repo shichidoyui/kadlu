@@ -1,6 +1,6 @@
 {{ $href := .Get "href"}}
 {{ $target := .Get "target"  | default "_self" }}
-<div class="box">
+<div class="box" role="link">
     <div class="media">
         {{ with .Site.GetPage $href }}
         {{ if .Params.cover }}

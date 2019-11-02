@@ -17,39 +17,46 @@ $(function () {
     barba.init({
         transitions: [{
             afterEnter() {
-                // サブウィンドウシステム・シンタックスハイライト・遅延ドードをリロード
+                // サブウィンドウシステムのボタンにイベントを付与
                 initSubWindow();
+                // シンタックスハイライトをロード
                 PR.prettyPrint();
+                // 遅延ロードを起動
                 $('img.lazy').lazyload();
                 // Youtubeにインライン再生URLを付与
                 initYoutube();
+                // カルーセル起動
+                initCarousel();
             },
             after() {
                 // サイドバーのメニューを一度クリアし、本体の目次をコピー
                 initToc();
+                // 動的なデザイン周り
                 initDesign();
             }
         }]
     });
     // サブウィンドウシステムのコマンド読み込み
-    initSubWindowCommand() ;
+    initSubWindowCommand();
     // 各ボタンにサブウィンドウ用のボタンを登録
     initSubWindow();
     // Youtubeにインライン再生URLを付与
     initYoutube();
     // 共通部分のボタンを登録
     initButton();
-    // デザイン周り
+    // 動的なデザイン周り
     initDesign();
-    // DOMロード後、ショードコードの画像に対してlazyloadを付与
+    // 遅延ロードを起動
     $('img.lazy').lazyload();
+    // カルーセル起動
+    initCarousel();
 });
 
 
 /**
  * モーダル制御のメソッド (一度のみ)
  */
-function initSubWindowCommand()  {
+function initSubWindowCommand() {
 
     /** モーダルのリサイズを可能にする */
     $('#sub-window').resizable({
@@ -101,9 +108,8 @@ function initSubWindowCommand()  {
         if (modalLebel === 1) {
             // モーダルレベルが1のとき
             // 画面へ真ん中へ位置調整
-            // $('#sub-window').height($(window).height() / 10 * 4);
             const top = subWindowY + $(window).scrollTop();
-            $('#sub-window').offset({ top: top, left: subWindowX }).css('height', '40vh')
+            $('#sub-window').offset({ top: top, left: subWindowX }).css('height', '40vh');
             if ($(window).width() <= breakPoint) {
                 $('#sub-window').css('bottom', '0').css('top', 'unset');
             }
@@ -163,9 +169,15 @@ function initSubWindow() {
     /** サブウィンドウ開くボタン */
     $('.sub-window-open').on('click', function () {
         // コンテンツをコピーし、モーダルを表示する(識別用のクラスも付与)
-        $('#sub-window-content').html($(this).parent().next().html()).children().addClass('copy');;
+        $('#sub-window-content').html($(this).parent().next().html()).children().addClass('copy');
         $('#sub-window-title').html($(this).prev().html());
         subWindowOpen();
+        setTimeout(
+            () => {
+                // コンテンツコピー後の処理
+                carousel();
+            }
+        );
     });
 
     /**
@@ -260,4 +272,18 @@ function initDesign() {
     }
 }
 
+/**
+ * Swiper(カルーセル)起動
+ */
+function initCarousel() {
+    var mySwiper = new Swiper('.swiper-container', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 10,
+        centeredSlides: true,
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+    });
+}
 
