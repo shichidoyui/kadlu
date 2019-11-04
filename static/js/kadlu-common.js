@@ -175,7 +175,7 @@ function initSubWindow() {
         setTimeout(
             () => {
                 // コンテンツコピー後の処理
-                carousel();
+                initCarousel();
             }
         );
     });

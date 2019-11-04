@@ -32,9 +32,12 @@ v0.58.3
 - balloon.html 吹き出し
 - ads.html アドセンス
 - pochette.html ポシェットシステム起動用
+- carousel-container.html カルーセルの親
+- carousel-slide.html カルーセルの子
 
 ## バージョン情報
 
+- v2.05 Nov 04, 2019 バグ対応
 - v2.04 Nov 02, 2019 カルーセルの実装 imgショートコードにlazyとの切り替えを追加 aria強化
 - v2.03 Oct 26, 2019 safariブラウザ対応 ウィジェットの位置調整
 - v2.02 Oct 22, 2019 CSS圧縮失敗修正 不要なクラス削除
