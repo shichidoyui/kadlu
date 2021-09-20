@@ -2,7 +2,7 @@
 <!-- カテゴリ・タグの一覧 postフォルダの中身のみリスト表示する-->
 <h1 class="block kadlu-title1">{{ .Title }}</h1>
 <div class="columns is-variable is-multiline">
-  {{ $paginator := .Paginate (where .Data.Pages "Type" "post") (index .Site.Params "paginate" | default 10) }}
+  {{ $paginator := .Paginate (where .Data.Pages "Type" "posts") (index .Site.Params "paginate" | default 10) }}
   {{ if ne $paginator.TotalPages 0 }}
   {{ range $paginator.Pages }}
   <div class="column  is-12-tablet is-12-mobile is-6-desktop">

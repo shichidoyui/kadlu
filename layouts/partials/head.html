@@ -2,7 +2,7 @@
 {{ template "_internal/google_analytics.html" . }}
 <!-- Site & Page Meta Data -->
 <!-- 投稿の場合のogp設定 -->
-{{ if eq .Type "post" }}
+{{ if eq .Type "posts" }}
   {{ $description := .Description | default .Summary }}
   <!-- Page Author & Description -->
   <meta name="author" content="{{ if isset .Params "author" }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}" />
@@ -64,7 +64,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="apple-touch-icon" sizes="120x120" href="{{ $logo | absURL}}">
 <!-- 構造化マークアップ -->
-{{ if eq .Type "post" }}
+{{ if eq .Type "posts" }}
 <!-- 投稿ページの場合 -->
 <script type="application/ld+json">
   {
@@ -121,31 +121,11 @@
 <!-- Styles -->
 <!-- Bulma -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"  crossorigin="anonymous">
-<!-- lightbox -->
-<link rel="stylesheet" href="/css/lightbox.min.css">
-<!-- swiper -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
 <!-- kadlu -->
 <link rel="stylesheet" href="/css/stylesheet-kadlu-common.min.css">
-<link rel="stylesheet" href="/css/stylesheet-kadlu-custom.css">
-<link rel="stylesheet" href="/css/stylesheet-custom.css">
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- lazyload -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js" type="text/javascript"></script>
-<!--barba pjax -->
-<script defer src="https://unpkg.com/@barba/core"></script>
+<link rel="stylesheet" href="/css/stylesheet-kadlu-custom.min.css">
 <!-- fontAwesome -->
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-<!-- jQuery UI -->
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<!-- lightbox -->
-<script defer src="/js/lightbox.min.js"></script>
-<!-- シンタックスハイライト -->
-<script defer src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-<!-- swiper -->
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
 <!-- 各種設定系 -->
 <script defer  src="/js/kadlu-common.js"></script>
 <!-- 自動広告 -->

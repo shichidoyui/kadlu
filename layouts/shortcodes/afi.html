@@ -1,0 +1,37 @@
+
+<div class="message is-kadlu">
+    {{ with .Get "title" }}
+    <div class="message-header">{{.}}</div>
+    {{ end }}
+    <div class="columns">
+        <div class="column is-6">
+            <div class="has-text-centered">
+                {{ .Inner | markdownify}}
+            </div>
+        </div>
+        <div class="column is-6">
+            {{ with .Get "comment" }}
+                <p>{{.}}</p>
+            {{ end }}
+                {{ with .Get "amazon" }}
+                <p><a class="button is-danger is-outlined is-fullwidth" onClick="ga('send', 'event', 'amazon', 'ads', 'amazon');" href="{{.}}">Amazon</a></p>
+                {{ end }}
+                {{ with .Get "rakuten" }}
+                <p><a class="button is-danger is-outlined is-fullwidth" onClick="ga('send', 'event', 'rakuten', 'ads', 'rakuten');" href="{{.}}">楽天</a></p>
+                {{ end }}
+                {{ with .Get "yahoo" }}
+                <p><a class="button is-danger is-outlined is-fullwidth" onClick="ga('send', 'event', 'yahoo', 'ads', 'yahoo');" href="{{.}}">Yahoo!</a></p>
+                {{ end }}
+                {{ with .Get "official" }}
+                <p><a class="button is-danger is-outlined is-fullwidth" onClick="ga('send', 'event', 'official', 'ads', 'official');" href="{{.}}">公式サイト</a></p>
+                {{ end }}
+                {{ with .Get "bestkenko" }}
+                <p><a class="button is-danger is-outlined is-fullwidth" onClick="ga('send', 'event', 'bestkenko', 'ads', 'bestkenko');" href="{{.}}">ベストケンコー</a></p>
+                {{ end }}
+                {{ with .Get "osaka" }}
+                <p><a class="button is-danger is-outlined is-fullwidth" onClick="ga('send', 'event', 'osaka', 'ads', 'osaka');" href="{{.}}">オオサカ堂</a></p>
+                {{ end }}
+
+        </div>
+    </div>
+</div>

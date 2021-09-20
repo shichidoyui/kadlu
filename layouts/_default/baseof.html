@@ -14,19 +14,16 @@
     {{ partial "header.html" . }}
     <main class="section container">
         <div class="columns is-multiline">
-            <div id="barba-wrapper" class="column is-8 kadlu-bgcolor1" data-barba="wrapper">
-                <div class="barba-container" data-barba="container" data-barba-namespace="home">
-                    {{ partial "header-widget.html" . }}
-                    {{ block "main" . }}{{ end }}
-                    {{ partial "footer-widget.html" . }}
-                </div>
+            <div class="column is-8 kadlu-bgcolor1">
+                {{ partial "header-widget.html" . }}
+                {{ block "main" . }}{{ end }}
+                {{ partial "footer-widget.html" . }}
             </div>
             <aside class="column is-4 kadlu-bgcolor1">
                 {{ partial "sidebar.html" . }}
             </aside>
         </div>
     </main>
-    {{ partial "sub-window.html" . }}
     {{ partial "footer.html" . }}
 </body>
 

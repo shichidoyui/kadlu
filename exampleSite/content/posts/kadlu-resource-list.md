@@ -96,8 +96,7 @@ draft: false
       ・目次下アドセンスの表示<br>
       ・記事の表示<br>
       ・タグの表示<br>
-      ・post記事の場合「前の記事」「次の記事」を表示<br>
-      ・(JSON)サブウィンドウへ記事を表示するために使用
+      ・(JSON)データも同時に作成
     </td>
   </tr>
 
@@ -235,7 +234,7 @@ draft: false
       ・configのメールアドレスがあれば表示<br>
       ・configの各SNS設定があれば表示<br>
       ・カテゴリ一覧と記事数を表示<br>
-      ・目次を表示(追尾・スマホ非表示)<br>
+      ・目次を表示<br>
       ・シェアボタンを表示<br>
     </td>
   </tr>
@@ -311,16 +310,6 @@ draft: false
     </td>
   </tr>
   <tr>
-    <td>amp-img.html</td>
-    <td>
-      <span class="bold">概要</span><br>
-      画像表示用のショートコード<br>
-      <span class="bold">主な機能</span><br>
-      ・imgを表示する<br>
-      ・lightboxを装備<br>
-    </td>
-  </tr>
-  <tr>
     <td>balloon.html</td>
     <td>
       <span class="bold">概要</span><br>
@@ -332,33 +321,23 @@ draft: false
     </td>
   </tr>
   <tr>
-    <td>pochette.html</td>
+    <td>card.html</td>
     <td>
       <span class="bold">概要</span><br>
-      サブウィンドウ起動用のショートコード<br>
+      カードのショートコード<br>
       <span class="bold">主な機能</span><br>
-      ・サブウィンドウ起動用のボタンを表示する<br>
-      ・ショートコードで挟むことにより様々なコンテンツをサブウィンドウ化できる
+      ・カードを表示する<br>
+      ・タイトルが表示可能<br>
     </td>
   </tr>
   <tr>
-    <td>carousel-container.html</td>
+    <td>afi.html</td>
     <td>
       <span class="bold">概要</span><br>
-      カルーセルのエリア確保用ショートコード<br>
+      アフィリエイト用のショートコード<br>
       <span class="bold">主な機能</span><br>
-      ・カルーセルの表示エリアを表示する<br>
-      ・内部に後述のcarousel-slideショートコードを使いコンテンツを用意する
-    </td>
-  </tr>
-  <tr>
-    <td>carousel-slide.html</td>
-    <td>
-      <span class="bold">概要</span><br>
-      カルーセルのスライド作成用ショートコード<br>
-      <span class="bold">主な機能</span><br>
-      ・挟んだコンテンツをスライド表示する<br>
-      ・親としてcarousel-containerショートコードが必要
+      ・2カラムで画像とボタンを表示する<br>
+      ・クリックイベントをアナリティクスに伝える<br>
     </td>
   </tr>
 </table>
@@ -401,16 +380,6 @@ draft: false
       SCCSも用意しているので、色の変数などを変えてお使いください
     </td>
   </tr>
-  <tr>
-    <td>stylesheet-kadlu-custom.css</td>
-    <td>
-      <span class="bold">概要</span><br>
-      ライトボックスのスタイル<br>
-      <span class="bold">主な機能</span><br>
-      ライトボックス表示<br>
-      <span class="bold">多分消します。</span>
-    </td>
-  </tr>
 </table>
 
 ### JS
@@ -436,23 +405,13 @@ draft: false
       ・パラーメータ(?q=○○)で渡ってきた場合も使用可能
     </td>
   </tr>
-  <tr>
-    <td>lightbox.min.js</td>
-    <td>
-      <span class="bold">概要</span><br>
-      ライトボックスのJS<br>
-      <span class="bold">主な機能</span><br>
-      ・ライトボックスを有効にする<br>
-      ・多分切ります。なるべくカスタムしないでください
-    </td>
-  </tr>
 </table>
 
 ## CDN
 
 サーバーに負担を掛けないようになるべくCDNを使っています。
 
-基本的にJQuery系の技術に統一しています。
+表示速度確保のため、jsのインポートは避けています
 
 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
   <tr>
@@ -475,60 +434,12 @@ draft: false
     </td>
   </tr>
   <tr>
-    <td>jQuery.lazyload.js</td>
-    <td>
-      <span class="bold">概要</span><br>
-      画像の遅延ロードJS<br>
-      <span class="bold">主な機能</span><br>
-      ・ショートコード(画像・内部リンク)を遅延ロード<br>
-      ・一覧ページでの画像を遅延ロード<br>
-      ・識別クラスは「class="lazy"」
-    </td>
-  </tr>
-  <tr>
-    <td>jQuery.UI.js(css)</td>
-    <td>
-      <span class="bold">概要</span><br>
-      サブウィンドウリサイズ用JS<br>
-      <span class="bold">主な機能</span><br>
-      ・PC表示時のサブウィンドウドラッグ、リサイズ
-    </td>
-  </tr>
-  <tr>
-    <td>barba2.js</td>
-    <td>
-      <span class="bold">概要</span><br>
-      Pjax用JS<br>
-      <span class="bold">主な機能</span><br>
-      ・PjaxはjQueryより使いやすいのでこちらを採用
-    </td>
-  </tr>
-  <tr>
     <td>fontAwesome.js</td>
     <td>
       <span class="bold">概要</span><br>
       アイコン用JS<br>
       <span class="bold">主な機能</span><br>
       ・ところどころにあるアイコンフォント
-    </td>
-  </tr>
-  <tr>
-    <td>prettify.js</td>
-    <td>
-      <span class="bold">概要</span><br>
-      コードのシンタックスハイライト用JS<br>
-      <span class="bold">主な機能</span><br>
-      ・コードが有る画面に雑に色付できる
-    </td>
-  </tr>
-  <tr>
-    <td>swiper.js(css)</td>
-    <td>
-      <span class="bold">概要</span><br>
-      カルーセル用JS<br>
-      <span class="bold">主な機能</span><br>
-      ・カルーセル機能を追加
-      ・slickはサブウィンドウシステムと相性が悪いのでこちらを採用
     </td>
   </tr>
 </table>

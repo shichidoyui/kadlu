@@ -162,11 +162,9 @@ Hugoテーマkadluの装飾用クラスを紹介します。
 
 ショートコードで対応できます。
 
-デフォルトで遅延ロードをかけています。遅延ロードを掛けたくない場合は「lazy="false"」属性を指定してください。
-
 SEO的に画像検索に出したい図や、下記カルーセル用の画像を用意したいときに使用してください。
 
-クリック後はライトボックスで表示されます。
+クリック後は別タグで表示されます。
 
 <div class="columns">
 <div class="column is-6">
@@ -187,13 +185,13 @@ SEO的に画像検索に出したい図や、下記カルーセル用の画像�
 
 内部リンクだけですが、bulmaのショートコードで対応できます。
 
-{{<a href="/post/kadlu-config-param">}}
-
 <div class="sourceview">
-  <pre class="prettyprint linenums">
-{{&lt;a href=&quot;/post/kadlu-config-param&quot;&gt;}}
+<pre class="prettyprint linenums">
+{{&lt;a href=&quot;/posts/kadlu-config-param&quot;&gt;}}
 </pre>
 </div>
+
+{{<a href="/posts/kadlu-config-param">}}
 
 (ベースのURL以下をhref属性に入れることで、ローカル環境、デプロイ後環境のどちらにも対応できます。)
 
@@ -218,67 +216,81 @@ SEO的に画像検索に出したい図や、下記カルーセル用の画像�
 
 画像が未指定の場合は、プロフィールのアイコンから持ってきます。
 
-### サブウィンドウシステム(pochette)
+### カード
 
-ショードコードで囲んだコンテンツをメモとして、サブウィンドウに渡すことができます。
+Blumaのメッセージスタイルを呼び出せるショートコードです。
 
-{{<pochette title="本日の動画">}}
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CGyEd0aKWZE?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-{{</pochette>}}
+属性一覧
+
+<table class="table">
+<tr>
+<th>title</th>
+<td>タイトル部分を表示します</td>
+</tr>
+<tr>
+<th>class</th>
+<td>クラスが指定できます</td>
+</tr>
+</table>
+
+{{<card title="カード">}}
+ショートコード内はmarkDown形式で表示できます
+{{</card>}}
 
 <div class="sourceview">
 <pre class="prettyprint linenums">
-{{&lt;pochette title=&quot;本日の動画&quot;&gt;}}
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/CGyEd0aKWZE?controls=0&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
-{{&lt;/pochette&gt;}}
+{{&lt;card title=&quot;カード&quot;&gt;}}
+ショートコード内はmarkDown形式で表示できます
+{{&lt;/card&gt;}}
 </pre>
 </div>
 
-動画などは非同期通信のため、再生しながら画面遷移することが可能です。
+### アフィリエイト
 
-### カルーセル
+商品画像表示、アフィリエイトリンクのボタンが表示できるタグです。
 
-Swiperをインポートしているので、カルーセルもできます。
+アドセンスにクリックイベントを送る仕組みがあり、かんたんなイベント管理ができます。
 
-ショートコードを使って起動できます。
+属性一覧
 
-もちろん、サブウィンドウシステムにも対応していますので、記事内の解説スライドを別ウィンドウで起動することもできますよ！
+<table class="table">
+<tr>
+<th>title</th>
+<td>タイトル部分を表示します</td>
+</tr>
+<tr>
+<th>comment</th>
+<td>コメントが指定できます</td>
+</tr>
+<tr>
+<th>amazon</th>
+<td>リンクを指定することでamazonボタンが表示されます</td>
+</tr>
+<tr>
+<th>rakuten</th>
+<td>リンクを指定することで楽天ボタンが表示されます</td>
+</tr>
+<tr>
+<th>yahoo</th>
+<td>リンクを指定することでyahooボタンが表示されます</td>
+</tr>
+<tr>
+<th>official</th>
+<td>リンクを指定することで公式ボタンが表示されます</td>
+</tr>
+</table>
 
-設定値は私好みですので、jsをいじっていただけば自動スライドなんかもできます。
+{{<afi title="商品タイトル" comment="コメントが入ります" amazon="amazon" rakuten="Rakuten" >}}
 
-{{<pochette title="カルーセルもサブウィンドウで">}}
-  {{<carousel-container>}}
-    {{<carousel-slide>}}
-    test1
-    {{<img lazy="false" src="/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg" alt="画像挿入について">}}
-    {{</carousel-slide>}}
-    {{<carousel-slide>}}
-    test2
-    {{<img lazy="false" src="/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg" alt="画像挿入について">}}
-    {{</carousel-slide>}}
-    {{<carousel-slide>}}
-    test3
-    {{<img lazy="false" src="/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg" alt="画像挿入について">}}
-    {{</carousel-slide>}}
-  {{</carousel-container>}}
-{{</pochette>}}
+画像とか
+{{</afi>}}
 
 <div class="sourceview">
 <pre class="prettyprint linenums">
-{{&lt;carousel-container&gt;}}
-    {{&lt;carousel-slide&gt;}}
-    test1
-    {{&lt;img lazy=&quot;false&quot; src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
-    {{&lt;/carousel-slide&gt;}}
-    {{&lt;carousel-slide&gt;}}
-    test2
-    {{&lt;img lazy=&quot;false&quot; src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
-    {{&lt;/carousel-slide&gt;}}
-    {{&lt;carousel-slide&gt;}}
-    test3
-    {{&lt;img lazy=&quot;false&quot; src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
-    {{&lt;/carousel-slide&gt;}}
-  {{&lt;/carousel-container&gt;}}
+{{&lt;afi title=&quot;商品タイトル&quot; comment=&quot;コメントが入ります&quot; amazon=&quot;amazon&quot; rakuten=&quot;Rakuten&quot; &gt;}}
+
+画像とか
+{{&lt;/afi&gt;}}
 </pre>
 </div>
 

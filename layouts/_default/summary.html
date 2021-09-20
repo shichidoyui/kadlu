@@ -2,8 +2,7 @@
   {{ if isset .Params "cover" }}
   <a href="{{ .Permalink }}">
     <figure class="card-image" title="{{ .Title }}">
-      <img alt="{{ .Title }}"  class="entry-cover lazy" data-original="{{.Site.BaseURL }}{{ .Params.cover }}">
-      </img>
+      <img alt="{{ .Title }}"  class="entry-cover lazy" src="{{.Site.BaseURL }}{{ .Params.cover }}"></img>
     </figure>
   </a>
   {{ end }}

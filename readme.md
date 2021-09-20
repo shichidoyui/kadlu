@@ -4,11 +4,11 @@ kadluは日本のアフィリエイトサイトのトレンドに合わせたブ
 
 Bulamによる簡単なカスタマイズ、国内WordPlessテーマに迫るSEO対策、広告表示の最適化を軸に作成しています。
 
-また、サブウィンドウを利用した動画との強力な連携も可能です。
+シンプルな作りにしてカスタマイズしやすくなっています。
 
 ## サンプルサイト
 
-http://kadlu.bluebear.jp/
+https://www.lonely-trekking.com/product/kadlu
 
 ## サンプル起動
 
@@ -31,12 +31,12 @@ v0.58.3
 - img.html 画像挿入用(遅延ロード・ライトボックス入)
 - balloon.html 吹き出し
 - ads.html アドセンス
-- pochette.html ポシェットシステム起動用
-- carousel-container.html カルーセルの親
-- carousel-slide.html カルーセルの子
+- card.html カード表示
+- afi.html 物販用アフィタグ
 
 ## バージョン情報
 
+- v3.00 Sep 09, 2021 コンセプト変更
 - v2.05 Nov 04, 2019 バグ対応
 - v2.04 Nov 02, 2019 カルーセルの実装 imgショートコードにlazyとの切り替えを追加 aria強化
 - v2.03 Oct 26, 2019 safariブラウザ対応 ウィジェットの位置調整
@@ -47,8 +47,7 @@ v0.58.3
 
 ## 今後の予定
 
-- アフィリエイト用API周り
-- ライトボックス見直し
+- バグ対応
 
 ## 注意点
 

@@ -4,7 +4,7 @@
 {{ end }}
 
 {
-    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "post" ) (index .Site.Params "paginate" | default 10) }}
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts" ) (index .Site.Params "paginate" | default 10) }}
     {{ with $paginator }}
    "data":[
      {{ range $i, $e := $paginator.Pages }}

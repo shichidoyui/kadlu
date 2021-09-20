@@ -8,7 +8,7 @@
             {{ if .Site.Menus.main }}
             <nav class="navbar is-fixed-top">
                 <div class="navbar-end">
-                    <a id="nav-open" class="navbar-burger is-flex" aria-label="menu" role="button">
+                    <a id="nav-open" class="navbar-burger is-flex" aria-label="menu" role="button"  onclick="openNav()">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -20,11 +20,11 @@
         <!-- メニュー用モーダル -->
         {{$nowURL := urls.Parse .Permalink }}
         <nav id="nav-modal" class="modal">
-            <div class="modal-background" role="button"></div>
+            <div class="modal-background" role="button" onclick="closeNav()"></div>
             <div class="modal-card">
                 <div class="modal-card-head">
                     <p class="modal-card-title">メニュー</p>
-                    <button id="nav-close" class="delete" aria-label="close"></button>
+                    <button id="nav-close" class="delete" aria-label="close" onclick="closeNav()"></button>
                 </div>
                 <div class="modal-card-body">
                     <!-- Content ... -->

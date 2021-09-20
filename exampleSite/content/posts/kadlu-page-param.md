@@ -53,7 +53,7 @@ draft: false
 </pre>
   </div>
   <div class="column">
-    {{<img src="/img/post/kadlu-page-param/kadlu-page-param01.jpg" width="9" height="16" layout="responsive" alt="画面内変数の挙動">}}
+
   </div>
 </div>
 

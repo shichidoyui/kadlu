@@ -1,0 +1,16 @@
+
+{{ if .Get "title" }}
+<div class="message {{ if .Get "class" }}{{ . }}{{ else }}is-kadlu{{ end }}">
+    <div class="message-header">{{.Get "title"}}</div>
+    <div class="message-body">
+        {{ .Inner | markdownify}}
+    </div>
+</div>
+{{ else }}
+<div class="message {{ if .Get "class" }}{{ . }} {{ else }}is-kadlu{{ end }}">
+    <div class="message-body">
+        {{ .Inner | markdownify}}
+    </div>
+</div>
+{{ end }}
+
