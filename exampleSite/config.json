@@ -9,7 +9,7 @@
     "category": "categories"
   },
   "permalinks": {
-    "post": "/:section/:filename/"
+    "posts": "/:section/:filename/"
   },
   "googleAnalytics": "UA-xxxxxxxx-xx",
   "outputs": {
@@ -101,27 +101,34 @@
       {
         "parent": "sub1",
         "name": "コンフィグパラメータ",
-        "url": "/post/kadlu-config-param/",
+        "url": "/posts/kadlu-config-param/",
         "weight": 1
       },
       {
         "parent": "sub1",
         "name": "ページパラメータ",
-        "url": "/post/kadlu-page-param/",
+        "url": "/posts/kadlu-page-param/",
         "weight": 2
       },
       {
         "parent": "sub1",
         "name": "資源一覧",
-        "url": "/post/kadlu-resource-list/",
+        "url": "/posts/kadlu-resource-list/",
         "weight": 3
       },
       {
         "parent": "sub1",
         "name": "装飾タグ一覧",
-        "url": "/post/kadlu-decoration-tag/",
+        "url": "/posts/kadlu-decoration-tag/",
         "weight": 4
       }
     ]
-  }
+  },
+  "markup": {
+    "goldmark": {
+       "renderer": {
+          "unsafe": true
+       }
+    }
+   }
 }

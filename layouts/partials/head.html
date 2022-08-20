@@ -1,3 +1,4 @@
+{{ $baseUrl := .Site.BaseURL}}
 {{ $logo := .Site.Params.logo }}
 {{ template "_internal/google_analytics.html" . }}
 <!-- Site & Page Meta Data -->
@@ -17,7 +18,7 @@
     <meta property="og:title" content="{{ .Title }}" />
     <meta property="og:url" content="{{ .Permalink }}" />
     <meta property="og:description" content="{{ $description | plainify }}" />
-    <meta property="og:image" content="{{ .Params.cover | absURL }}" />
+    <meta property="og:image" content="{{ $baseUrl }}{{ .Params.cover }}" />
     <meta property="og:site_name" content="{{ .Site.Title }}" />
   {{ else }}
     <meta property="twitter:card" content="summary" />
@@ -27,7 +28,7 @@
     <meta property="og:title" content="{{ .Title }}" />
     <meta property="og:url" content="{{ .Permalink }}" />
     <meta property="og:description" content="{{ $description | plainify }}" />
-    <meta property="og:image" content="{{ $logo | absURL }}" />
+    <meta property="og:image" content="{{ $baseUrl }}{{ $logo }}" />
     <meta property="og:site_name" content="{{ .Site.Title }}" />
   {{ end }}
 {{ else }}
@@ -42,7 +43,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{{ .Site.Title }}" />
   <meta property="og:description" content="{{ .Site.Params.description }}" />
-  <meta property="og:image" content="{{ $logo | absURL }}" />
+  <meta property="og:image" content="{{ $baseUrl }}{{ $logo }}" />
   <meta property="og:site_name" content="{{ .Site.Title }}" />
 {{ end }}
 <!-- Permalink & RSSlink -->
@@ -60,9 +61,9 @@
 {{ if .Site.Params.googlesiteverification }}<meta name="google-site-verification" content="{{ .Site.Params.googleSiteVerification }}" />{{ end }}
 {{ if .Site.Params.msvalidate }}<meta name="msvalidate.01" content="{{ .Site.Params.msValidate }}" />{{ end }}
 <!-- ファビコンは任意 タッチアイコンは必須 -->
-{{ if .Site.Params.Favicon }}<link rel="icon" href="{{ .Site.Params.Favicon | absURL }}" />  {{ end }}
+{{ if .Site.Params.Favicon }}<link rel="icon" href="{{.Site.BaseURL}}{{ .Site.Params.Favicon }}" />  {{ end }}
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="apple-touch-icon" sizes="120x120" href="{{ $logo | absURL}}">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ $baseUrl }}{{ $logo }}">
 <!-- 構造化マークアップ -->
 {{ if eq .Type "posts" }}
 <!-- 投稿ページの場合 -->
@@ -76,9 +77,9 @@
     },
     "headline": "{{ .Site.Title }}",
     "description": "{{ .Summary | plainify | htmlUnescape }}",
-    "datePublished": "{{ slicestr .Date 0 10 }}",{{$time := time .Params.updateDate }}
-    "dateModified": "{{ slicestr $time 0 10 }}",
-    "image": [ "{{ .Params.cover | absURL }}" ],
+    "datePublished": "{{ slicestr .Date 0 10 }}",
+    "dateModified": "{{ if .Params.updateDate }}{{ slicestr .Params.updateDate 0 10 }}{{ end }}",
+    "image": [ "{{ $baseUrl }}{{ .Params.cover }}" ],
     "author": {
       "@type": "Person",
       "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}"
@@ -88,7 +89,7 @@
       "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}",
       "logo": {
         "@type": "ImageObject",
-        "url": "{{ $logo | absURL}}"
+        "url": "{{ $baseUrl }}{{ $logo}}"
       }
     }
   }
@@ -106,7 +107,7 @@
           "name": "{{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Params.author }}{{ end }}",
           "logo": {
             "@type": "ImageObject",
-            "url": "{{ $logo | absURL}}"
+            "url": "{{ $baseUrl }}{{ $logo }}"
           }
       }
       {{ if  .Site.Params.mainImage }}
@@ -122,12 +123,12 @@
 <!-- Bulma -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"  crossorigin="anonymous">
 <!-- kadlu -->
-<link rel="stylesheet" href="/css/stylesheet-kadlu-common.min.css">
-<link rel="stylesheet" href="/css/stylesheet-kadlu-custom.min.css">
+<link rel="stylesheet" href="{{.Site.BaseURL}}/css/stylesheet-kadlu-common.min.css">
+<link rel="stylesheet" href="{{.Site.BaseURL}}/css/stylesheet-kadlu-custom.min.css">
 <!-- fontAwesome -->
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <!-- 各種設定系 -->
-<script defer  src="/js/kadlu-common.js"></script>
+<script defer  src="{{.Site.BaseURL}}/js/kadlu-common.js"></script>
 <!-- 自動広告 -->
 {{ if and .Site.Params.adsensePublisher .Site.Params.adsenseAutoAds }}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

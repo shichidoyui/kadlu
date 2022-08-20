@@ -5,7 +5,7 @@ updateDate: 2019-08-15T22:27:44+09:00
 categories: ["静的ジェネレーター","kadlu"]
 tags: [ "kadlu" ,"bulma"]
 hashtags: ["kadlu" ,"bulma"]
-url: "/post/kadlu-decoration-tag"
+url: "/posts/kadlu-decoration-tag"
 description:
 cover: "/img/eyecatch/eyecatch001.jpg"
 author:
@@ -174,8 +174,6 @@ SEO的に画像検索に出したい図や、下記カルーセル用の画像�
 <div class="sourceview">
 <pre class="prettyprint linenums">
 {{&lt;img src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
-{{&lt;img lazy=&quot;false&quot; src=&quot;/img/post/kadlu-decoration-tag/kadlu-decoration-tag01.jpg&quot; alt=&quot;画像挿入について&quot;&gt;}}
-
 </pre>
 </div>
 </div>
@@ -206,11 +204,8 @@ SEO的に画像検索に出したい図や、下記カルーセル用の画像�
 <div class="sourceview">
 <pre class="prettyprint linenums">
 {{&lt; balloon src=&quot;/img/common/faceicon.png&quot; value=&quot;吹き出しです！画像とセリフを指定するとできます。&quot;&gt;}}
-
 {{&lt; balloon  value=&quot;逆からです！「right=&quot;true&quot;」を記載すると右からになります。&quot; right=&quot;true&quot; &gt;}}
-
 {{&lt; balloon  &quot;WordPressのショートカットのように記載することもできます。(置換が楽だからね)&quot; &gt;}}
-
 </pre>
 </div>
 
@@ -284,11 +279,9 @@ Blumaのメッセージスタイルを呼び出せるショートコードです
 
 画像とか
 {{</afi>}}
-
 <div class="sourceview">
 <pre class="prettyprint linenums">
 {{&lt;afi title=&quot;商品タイトル&quot; comment=&quot;コメントが入ります&quot; amazon=&quot;amazon&quot; rakuten=&quot;Rakuten&quot; &gt;}}
-
 画像とか
 {{&lt;/afi&gt;}}
 </pre>

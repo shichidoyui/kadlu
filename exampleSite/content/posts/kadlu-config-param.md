@@ -5,7 +5,7 @@ updateDate: 2019-08-27T22:27:44+09:00
 categories: ["kadlu基本設計","kadlu"]
 tags: [ "kadlu","Hugo" ]
 hashtags: ["kadlu" ,"Hugo"]
-url: "/post/kadlu-config-param"
+url: "/posts/kadlu-config-param"
 description: 
 cover: "/img/eyecatch/eyecatch001.jpg"
 author: 

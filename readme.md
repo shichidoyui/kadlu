@@ -8,7 +8,7 @@ Bulamによる簡単なカスタマイズ、国内WordPlessテーマに迫るSEO
 
 ## サンプルサイト
 
-https://www.lonely-trekking.com/product/kadlu
+https://pigeon-system.com/kadlu/
 
 ## サンプル起動
 
@@ -36,6 +36,7 @@ v0.58.3
 
 ## バージョン情報
 
+- v3.01 Aug 20, 2022 Hugo v0.101 対応 サブディレクトリ対応
 - v3.00 Sep 09, 2021 コンセプト変更
 - v2.05 Nov 04, 2019 バグ対応
 - v2.04 Nov 02, 2019 カルーセルの実装 imgショートコードにlazyとの切り替えを追加 aria強化

@@ -16,7 +16,7 @@
     <p class="block kadlu-title3">{{ .Site.Params.author }} </p>
     <div class="block kadlu-article">
         {{ if .Site.Params.profileImg }}
-        <img src="{{ .Site.Params.profileImg | absURL }}" width="100" height="100"></img>
+        <img src="{{.Site.BaseURL}}{{ .Site.Params.profileImg }}" width="100" height="100"></img>
         {{ end }}
         <div>
             {{.Site.Params.profileDescription | safeHTML}}
@@ -54,20 +54,20 @@
             {{ if .HasChildren }}
             <li>
                 {{ if .URL }}
-                <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
                 {{ else }}
                 <span>{{ .Name }}</span>
                 {{ end }}
                 <ul>
                     {{ range .Children }}
-                    <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+                    <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
                     {{ end }}
                 </ul>
             </li>
             {{ else }}
             <li>
                 {{ if .URL }}
-                <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+                <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
                 {{ else }}
                 <span>{{ .Name }}</span>
                 {{ end }}
@@ -83,8 +83,9 @@
     <h4 class="kadlu-title1">カテゴリ一覧</h4>
     <div>
         <ul class="menu-list">
+            {{ $baseUrl := .Site.BaseURL}}
             {{ range .Site.Taxonomies.categories.ByCount }}
-            <li><a href="/categories/{{ .Name | urlize }}">{{ .Name }}<span>({{ .Count }})</span></a>
+            <li><a href="{{ $baseUrl }}/categories/{{ .Name | urlize }}">{{ .Name }}<span>({{ .Count }})</span></a>
             </li>
             {{ end }}
         </ul>
@@ -93,7 +94,7 @@
 <div class="kadlu-sticky">
     <!-- ソーシャルボタン -->
     <div class="block">
-        <div class="sns copy">
+        <div class="sns">
             {{ partial "social.html" . }}
         </div>
     </div>

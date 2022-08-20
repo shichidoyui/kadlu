@@ -1,3 +1,4 @@
+{{ $baseUrl := .Site.BaseURL}}
 {{ $href := .Get "href"}}
 {{ $target := .Get "target"  | default "_self" }}
 <div class="message is-kadlu" role="link">
@@ -5,11 +6,11 @@
         {{ with .Site.GetPage $href }}
         {{ if .Params.cover }}
         <figure class="column is-2">
-            <img class="image is-128x128" src="{{ .Params.cover }}" alt="アイキャッチ"/>
+            <img class="image is-128x128" src="{{ $baseUrl }}{{ .Params.cover }}" alt="アイキャッチ"/>
         </figure>
         {{ end }}
         <div class="column is-10">
-            <a class="content kadlu-color4" href="{{ $href }}" target="{{ $target }}">
+            <a class="content kadlu-color4" href="{{ $baseUrl }}{{ $href }}" target="{{ $target }}">
                 <p>
                     <span class="bold">{{ .Title }}</span>
                 </p>
