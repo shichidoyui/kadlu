@@ -2,7 +2,7 @@
     <section class="hero is-large kadlu-has-background kadlu-bgcolor1">
         {{ if .Site.Params.mainImage }}
         <img class="kadlu-hero-background" src="{{.Site.BaseURL }}{{ .Site.Params.mainImage }}"
-            alt="TOP image"></img>
+            alt="TOP image" loading="lazy" decoding="async"></img>
         {{ end }}
         <div class="hero-head">
             {{ if .Site.Menus.main }}

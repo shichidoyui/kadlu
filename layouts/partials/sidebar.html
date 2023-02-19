@@ -16,7 +16,7 @@
     <p class="block kadlu-title3">{{ .Site.Params.author }} </p>
     <div class="block kadlu-article">
         {{ if .Site.Params.profileImg }}
-        <img src="{{.Site.BaseURL}}{{ .Site.Params.profileImg }}" width="100" height="100"></img>
+        <img src="{{.Site.BaseURL}}{{ .Site.Params.profileImg }}" alt="ライターのアイコン画像" width="100" height="100" loading="lazy" decoding="async"></img>
         {{ end }}
         <div>
             {{.Site.Params.profileDescription | safeHTML}}

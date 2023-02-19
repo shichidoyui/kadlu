@@ -26,7 +26,7 @@
     {{ end }}
     <!-- markdownのcoverが指定されている場合アイキャッチイメージを表示する -->
     {{ if isset .Params "cover" }}
-    <img alt="{{ .Title }}" class="entry-cover" src="{{.Site.BaseURL}}{{ .Params.cover }}"></img>
+    <img alt="{{ .Title }}" class="entry-cover" src="{{.Site.BaseURL}}{{ .Params.cover }}" loading="lazy" decoding="async"></img>
     {{ end }}
     <!-- ○○分で読めます部分 -->
     {{ if .Params.ReadingTime }}

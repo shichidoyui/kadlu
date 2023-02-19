@@ -45,6 +45,10 @@
     margin-bottom: 2rem
 }
 
+.kadlu-article blockquote {
+    word-break: break-word;
+}
+
 .kadlu-article iframe {
     width: 100%
 }
